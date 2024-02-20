@@ -13,7 +13,7 @@ jobs:
           command: monitor
       - name: Run Snyk code to do SAST with sarif output
         uses: snyk/actions/node@master
-        continue-on-error: true #to ensure that SARIF upload gets called no matter the result
+        continue-on-error: true #to ensure that SARIF upload gets called no matter the results
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_DIDIK_TEST_1}}
         with:
