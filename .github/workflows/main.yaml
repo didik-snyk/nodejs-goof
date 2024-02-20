@@ -15,7 +15,7 @@ jobs:
         uses: snyk/actions/node@master
         continue-on-error: true #to ensure that SARIF upload gets called no matter the result
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_DIDIK_TEST}}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_DIDIK_TEST_1}}
         with:
           command: code test
           args: --sarif --sarif-file-output=snyk.sarif
