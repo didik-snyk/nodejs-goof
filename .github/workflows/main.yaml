@@ -5,13 +5,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
+      - name: Run Snyk to check for open source vulnerabilities
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_DIDIK_TEST_1 }}
         with:
           command: monitor
+      - name: Run Snyk code to do SAST with sarif output
+        uses: snyk/actions/node@master
+        continue-on-error: true #to ensure that SARIF upload gets called no matter the result
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_DIDIK_TEST}}
+        with:
+          command: code test
+          args: --sarif --sarif-file-output=snyk.sarif
       - name: Upload result to GitHub Code Scanning 
+        uses: 
         uses: github/codeql-action/upload-sarif@v2
         with: 
           sarif_file: snyk.sarif
