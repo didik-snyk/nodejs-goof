@@ -11,3 +11,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_DIDIK_TEST_1 }}
         with:
           command: monitor
+      - name: Upload result to GitHub Code Scanning 
+        uses: github/codeql-action/upload-sarif@v2
+        with: 
+          sarif_file: snyk.sarif
