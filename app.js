@@ -80,9 +80,17 @@ if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
 
-var token = 'SECRET_TOKEN_f8ed84e8f41e4146403dd4a6bbcea5e418d23a9';
+ var token = 'SECRET_TOKEN_87298347928414640bbca18d23a9_testing';
+ var secret = '12345678'
+//var testing = 'SECRET_TOKEN_498983745993804985039837498753$%#$%#$8932749827323testing'
+var API_KEY = 'APP_KEY'
+var username = 'supercool1234'
+var password = 'jshdf89324'
+
+// var token = 'SECRET_TOKEN_ad31241lijas46403testing'
 console.log('token: ' + token);
 
 http.createServer(app).listen(app.get('port'), function () {
+  myurl = location.href;
   console.log('Express server listening on port ' + app.get('port'));
 });
